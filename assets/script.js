@@ -6,8 +6,8 @@ var numberOption = "0123456789"
 var specialChar = "!@#$%^&*()?[]{}"
 var passwordLength
 var uppercaseSelected
-var numberCheck
-var specialCharcheck
+var numberSelected
+var specialCharSelected
 
 
 // Function for password length
@@ -25,14 +25,39 @@ function computeLength () {
     
         return passwordLength;
 
-        
+// Function for case
+function computeupperCase () {
+    uppercaseSelected = prompt("Do you want uppercase letters in your password?");
+        uppercaseSelected = uppercaseSelected.toLowerCase();
+
+        if (uppercaseSelected === "yes"){
+            uppercaseSelected = true;
+            return uppercaseSelected;
+        }
+
+        else (uppercaseSelected === "no")
+            uppercaseSelected = false;
+            return uppercaseSelected;
+        }
+       
+    
+// Function Number
+function computeNumber(){
+    numberSelected = promt("Do you want numbers in your password?");
+      
+
+      if (numberSelected === "yes"){
+          numberSelected = true;
+          return numberSelected;
+      }
+
+       else (numberSelected=== "no")
+           numberSelected = false
+           return numberSelected;
+       }
 
 
 // Write password to the #password input
-
-
-
-
 
 
 function writePassword() {
