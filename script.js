@@ -113,7 +113,8 @@ else if (upperCaseSelected){
 }
 
 for (var i = 0; i <passwordLength; i++){
-  password += characters.charAt(Math.floor(Math.random() * characters.charAt.length));
+  password += characters.charAt
+  (Math.floor(Math.random() * characters.length));
 }
 
 return password;
