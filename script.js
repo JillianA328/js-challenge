@@ -1,3 +1,4 @@
+  
 var generateBtn = document.querySelector("#generate");
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -82,9 +83,45 @@ function generatePassword() {
   computeUpperCase();
   computeNumbers();
   computeSpecial();
+
+
+var characters = lowerCase;
+var password = "";
+if (upperCaseSelected && numberSelected && specialCharSelected){
+  characters += upperCaseSelected + numberSelected + specialCharSelected;
+
+}else if (upperCaseSelected && numberSelected){
+  characters += upperCaseSelected + numberSelected;
+
+}else if (numberSelected && specialCharSelected){
+  characters += upperCaseSelected + specialCharSelected;
+
+}else if (specialCharSelected && upperCaseSelected){
+  characters += upperCaseSelected + specialCharSelected;
+
+}else if (numberSelected){
+  characters += numberSelected
+}
+else if (upperCaseSelected){
+  characters += upperCaseSelected
+
+}else if (specialCharSelected){
+  characters += specialCharSelected
+
+}else {
+  characters === lowerCase;
 }
 
-// Get references to the #generate element
+for (var i = 0; i <passwordLength; i++){
+  password += characters.charAt(Math.floor(Math.random() * characters.charAt.length));
+}
+
+return password;
+}
+
+
+
+/// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
