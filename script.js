@@ -1,124 +1,51 @@
-  
-var generateBtn = document.querySelector("#generate");
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numbers = "0123456789";
-var specialChar = "!@#$%^&*()_-+={}[];:'`~<,>.?/|";
-var passwordLength;
-var upperCaseSelected;
-var numberSelected;
-var specialCharSelected;
+var generateBtn = document.querySelector("generate");
 
-//Function used for password length
+var passwordLength
+var numberSelect
+var specialChar
+var upperCase
 
-function computeLength() {
-  passwordLength = prompt(
-    "How many characters would you like your password to be (between 8-128 characters):"
-  );
 
-  if (passwordLength < 8) {
-    alert("Password length must be greater than 8 characters");
-    computeLength();
-  } else if (passwordLength > 128) {
-    alert("Password length must be greater than 128 characters");
-    computeLength();
+
+// How long do you want your password to be?
+function passwordLength() {
+  var passwordLength = prompt ('How many characters do you want your password to be?  Please pick a number between 1 and 128');
   }
 
-  return passwordLength;
+// Do you want numbers in your password?
+
+function numberSelect() {
+  Window.prompt('Do you want numbers in your password?', 'Yes || No')
 }
 
-// Function to determine whether user wants to use uppercase in password
-
-function computeUpperCase() {
-  upperCaseSelected = prompt("Do you want uppercase letters in your password?");
-  upperCaseSelected = upperCaseSelected.toLowerCase();
-
-  if (upperCaseSelected === "yes") {
-    upperCaseSelected = true;
-    return upperCaseSelected;
-  } else if (upperCaseSelected === "no") {
-    upperCaseSelected = false;
-    return upperCaseSelected;
-  }
-  return upperCaseSelected;
+// Do you want uppercase letters in your password?
+function upperCase() {
+  Window.prompt('Do you want uppercase letters in your password?')
 }
 
-// Funtion to determine whether user wants to use numbers in the password
-
-function computeNumbers() {
-  numberSelected = prompt("Do you want numbers ");
-
-  if (numberSelected === "yes") {
-    numberSelected = true;
-    return numberSelected;
-  } else if (numberSelected === "no") {
-    numberSelected = false;
-    return numberSelected;
-  }
-  return numberSelected;
+// Do you want special characters in your password?
+function specialChar(){
+  Window.prompt('Do you want special characters in your password?')
 }
 
-//Function to determine whether user wants special characters in password
-
-function computeSpecial() {
-  specialCharSelected = prompt(
-    "Do you want special characters in your password?"
-  );
-  specialCharSelected = specialCharSelected.toLowerCase();
-
-  if (specialCharSelected === "yes") {
-    specialCharSelected = true;
-    return specialCharSelected;
-  } else if (specialCharSelected === "no") {
-    specialCharSelected = false;
-    return specialCharSelected;
-  }
-  return specialCharSelected;
-}
-
-//Function used to gather inputs from other functions
-
-function generatePassword() {
-  computeLength();
-  computeUpperCase();
-  computeNumbers();
-  computeSpecial();
 
 
-var characters = lowerCase;
-var password = "";
-if (upperCaseSelected && numberSelected && specialCharSelected){
-  characters += upperCaseSelected + numberSelected + specialCharSelected;
 
-}else if (upperCaseSelected && numberSelected){
-  characters += upperCaseSelected + numberSelected;
 
-}else if (numberSelected && specialCharSelected){
-  characters += upperCaseSelected + specialCharSelected;
 
-}else if (specialCharSelected && upperCaseSelected){
-  characters += upperCaseSelected + specialCharSelected;
 
-}else if (numberSelected){
-  characters += numberSelected
-}
-else if (upperCaseSelected){
-  characters += upperCaseSelected
 
-}else if (specialCharSelected){
-  characters += specialCharSelected
 
-}else {
-  characters === lowerCase;
-}
 
-for (var i = 0; i <passwordLength; i++){
-  password += characters.charAt
-  (Math.floor(Math.random() * characters.length));
-}
+//Code to pick a random number
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+ }
 
-return password;
-}
+
+
 
 
 
