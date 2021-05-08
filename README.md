@@ -5,3 +5,5 @@ Using JavaScript and HTML, I made a password generator.  The user has the option
 ![Screenshot3](https://user-images.githubusercontent.com/81400805/117528370-da2d6100-af9f-11eb-8562-dfb47588ce14.PNG)
 ![Screenshot5](https://user-images.githubusercontent.com/81400805/117528394-03e68800-afa0-11eb-8779-ffb91c541bd2.PNG)
 ![Screenshot4](https://user-images.githubusercontent.com/81400805/117528395-047f1e80-afa0-11eb-89d5-972cfd51b45c.PNG)
+
+https://jilliana328.github.io/js-challenge/
