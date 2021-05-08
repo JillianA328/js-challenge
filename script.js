@@ -1,6 +1,6 @@
 var generateBtn = document.querySelector("generate");
 
-//Variance List
+// Variable List
 var passwordLength
 var numberSelect
 var specialChar
@@ -12,48 +12,44 @@ var promptResponse
 // How long do you want your password to be?
 function computeLength() {
   var promptResponse = prompt(
-    "How many characters would you like your password to be?  Please pick a number between 8 and 128")
-;
+    "How many characters would you like your password to be?  Please pick a number between 8 and 128");
 
-  if (passwordLength == 0) {
+  var passwordLength = Number.parseInt(promptResponse, 10);
+
+
+  if (Number.isNaN(passwordLength)) {
+    alert("Password length must be a number")
+    return computeLength();
+  } else if (passwordLength == 0) {
     alert("Please pick a number between 8 and 128");
     return undefined;
+  } else if (passwordLength <= 7) {
+    alert("Password length must be greater than or equal to 8");
+    return computeLength();
+  } else if (passwordLength > 128) {
+    alert("Password length must be less than 128");
+    return computeLength();
   }
 
-var passwordLength = Number.parseInt(promptResponse, 10);
-if (Number.isNaN(passwordLength)){
-  alert("Password length must be a number between 1 and 128")
-  return computeLength();
-}
-
-if (passwordLength < 8){
-  alert("Password length must be greater than 8");
-  return computeLength();
-}else if (passwordLength > 128){
-  alert("Password length must be less than 128");
-  return computeLength();
-}
-
-return passwordLength;
+  return passwordLength;
 }
 
 // Do you want uppercase letters in your password?
 
 function computeUpperCase() {
-  var promptResponse = prompt ( 
-    "Do you want numbers in your password?"
-  );
+  var promptResponse = prompt(
+    "Do you want  uppercase letters in your password?");
 
   if (promptResponse === null) {
     return undefined;
   }
-  
+
   promptResponse = promptResponse.toLowerCase();
-  return promptResponse ==="yes";
+  return promptResponse === "yes";
 }
 
 // Do you want numbers in your password?
-function computeNumbers(){
+function computeNumbers() {
   var promptResponse = prompt("Do you want numbers in your password?");
 
   if (promptResponse === null) {
@@ -63,71 +59,68 @@ function computeNumbers(){
   promptResponse = promptResponse.toLowerCase();
 
   return promptResponse === "yes";
-  }
-
-
-
-
-  // Do you want special characters?
-  function computeSpecial() {
-    var promptResponse = prompt(
-      "Do you want special characters in your password?"
-    );
-    if (promptResponse === null) {
-      return undefined;
-    }
-
-    promptResponse = promptResponse.toLowerCase();
-
-    return promptResponse === "yes";
-   }
-
-  function generatePassword() {
-    var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-    var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var numbers = "0123456789";
-    var specialChar = "~!@#$%^&*()_+|}{";
-    
-    var characters = lowerCase;
-
-    var passwordLength = computeLength();
-    if (passwordLength === undefined){
-      return;
-    }
-
-    var upperCaseSelected = computeUpperCase(); 
-    if (upperCaseSelected === undefined){
-      return;
-    }
-    if (upperCaseSelected === true){
-      characters += upperCase;
-    }
-
-    var numberSelected = computeNumbers();
-    if (numberSelected === undefined){
-      return;
-    }
-
-    if(numberSelected === true){
-      characters += numbers;
-    }
-
-var specialCharSelected = computeSpecial();
-if (specialCharSelected === undefined){
-  return;
 }
 
-if (specialCharSelect === true){
-  characters += specialChar;
+
+
+
+// Do you want special characters?
+function computeSpecial() {
+  var promptResponse = prompt(
+    "Do you want special characters in your password?");
+
+  if (promptResponse === null) {
+    return undefined;
+  }
+
+  promptResponse = promptResponse.toLowerCase();
+  return promptResponse === "yes";
 }
 
-var password ="";
+function generatePassword() {
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "0123456789";
+  var specialChar = "~!@#$%^&*()_+|}{";
 
-for (var i = 0; i < passwordLength; i++) {
-  password += characters.CharAt(
-    Math.floor(Math.random() * characters.length)
-  );
+  var validCharacters = lowerCase;
+
+  var passwordLength = computeLength();
+  var upperCaseSelected = computeUpperCase();
+ 
+
+  if (upperCaseSelected === undefined) {
+    return;
   }
+  if (upperCaseSelected === true){
+    validCharacters += upperCase;
+  }
+
+  var numberSelected = computeNumbers();
+  if (numberSelected === undefined) {
+    return;
+  }
+
+  if (numberSelected === true) {
+    validCharacters += numbers;
+  }
+
+  var specialCharSelected = computeSpecial();
+  if (specialCharSelected === undefined) {
+    return;
+  }
+
+  if (specialCharSelected === true) {
+    validCharacters += specialChar;
+  }
+
+  var password = "";
+
+  
+  for (var i = 0; i < passwordLength; i++) {
+    password += validCharacters.charAt(Math.floor(Math.random() * validCharacters.length));
+  }
+  console.log("here's your password:' + password);")
   return password;
 }
 
@@ -137,7 +130,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
-  }
+  passwordText.value = password;
+}
 
-generateBtn.addEventListener("click",writePassword);
+generateBtn.addEventListener("click", writePassword);
