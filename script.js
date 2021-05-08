@@ -32,7 +32,11 @@ function computeLength() {
   }
 
   return passwordLength;
+  
 }
+console.log("How long do you want your password to be?' + 8-128")
+
+
 
 // Do you want uppercase letters in your password?
 
@@ -46,7 +50,9 @@ function computeUpperCase() {
 
   promptResponse = promptResponse.toLowerCase();
   return promptResponse === "yes";
+
 }
+
 
 // Do you want numbers in your password?
 function computeNumbers() {
@@ -60,6 +66,7 @@ function computeNumbers() {
 
   return promptResponse === "yes";
 }
+console.log("Do you want numbers?' + Yes or No")
 
 
 
@@ -76,6 +83,7 @@ function computeSpecial() {
   promptResponse = promptResponse.toLowerCase();
   return promptResponse === "yes";
 }
+console.log("Do you want special characters?' + Yes or No")
 
 function generatePassword() {
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
